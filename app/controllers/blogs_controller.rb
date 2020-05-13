@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   def show
-    
+    @blog = Blog.find(params[:id])
   end
 
   def index
@@ -9,13 +9,13 @@ class BlogsController < ApplicationController
 
 
   def new
-  	  @blog = Blog.new
+  	@blog = Blog.new
   end
 
   def crete
-  	  blog = Blog.new(blog_params)
-  	  blog.save
-  	  redirect_to blog_path
+  	blog = Blog.new(blog_params)
+  	blog.save
+  	redirect_to blog_path(blog.id)
   end
 
   private
